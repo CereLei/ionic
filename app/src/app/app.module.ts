@@ -1,3 +1,6 @@
+import { RestProvider } from './../providers/rest/rest';
+import { RegisterPage } from './../pages/register/register';
+import { LoginPage } from './../pages/login/login';
 import { NotificationPage } from './../pages/notification/notification';
 import { MorePage } from './../pages/more/more';
 import { DiscoveryPage } from './../pages/discovery/discovery';
@@ -14,6 +17,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+
+import {HttpModule} from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,
@@ -22,12 +29,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     NotificationPage,
     MorePage,
     DiscoveryPage,
-    ChatPage
+    LoginPage,
+    ChatPage,
+    RegisterPage
 
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,13 +47,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     NotificationPage,
     MorePage,
+    LoginPage,
     DiscoveryPage,
-    ChatPage
+    ChatPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    RestProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider
   ]
 })
 export class AppModule {}

@@ -14,5 +14,17 @@
 
 
 <ion-content padding>
-
+<div *ngIf="notLogin">
+  <ion-card>
+    <ion-card-header text-center>
+      登陆 前端资讯QA,体验更多功能
+    </ion-card-header>
+    <ion-card-content text-center>
+      <button ion-button outline small (click)="showModal()">登陆/注册</button>
+    </ion-card-content>
+  </ion-card>
+</div>
+<div *ngIf="logined">
+  123
+</div>
 </ion-content>

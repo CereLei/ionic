@@ -1,3 +1,5 @@
+import { HeadfacePage } from './../pages/headface/headface';
+import { UserPage } from './../pages/user/user';
 import { RestProvider } from './../providers/rest/rest';
 import { RegisterPage } from './../pages/register/register';
 import { LoginPage } from './../pages/login/login';
@@ -31,7 +33,9 @@ import { IonicStorageModule } from '@ionic/storage';
     DiscoveryPage,
     LoginPage,
     ChatPage,
-    RegisterPage
+    RegisterPage,
+    UserPage,
+    HeadfacePage
 
   ],
   imports: [
@@ -50,7 +54,9 @@ import { IonicStorageModule } from '@ionic/storage';
     LoginPage,
     DiscoveryPage,
     ChatPage,
-    RegisterPage
+    RegisterPage,
+    UserPage,
+    HeadfacePage
   ],
   providers: [
     StatusBar,

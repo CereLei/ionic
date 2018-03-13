@@ -39,6 +39,16 @@ export class RestProvider {
   register(mobile, nickname, password): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlRegister + "?mobile=" + mobile + "&nickname=" + nickname + "&password=" + password)
   }
+    //获取用户信息
+    getUserInfo(userId): Observable<string[]> {
+      return this.getUrlReturn(this.apiUrlUserInfo + "?userid=" + userId);
+    }
+      //更新
+  updateNickName(userId, nickname): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlUpdateNickName + "?userid=" + userId + "&nickname=" + nickname);
+  }
+     //获取用户信息
+ 
   /**
    * 
    * 全局获取HTTP请求方法

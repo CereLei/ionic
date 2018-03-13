@@ -1,0 +1,63 @@
+<!--
+  Generated template for the DetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar *ngIf="storeVal">
+    <ion-title>{{question?.ContentTitle}}</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+          <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-navbar *ngIf="!storeVal">
+      <ion-title>提示：</ion-title>
+      <ion-buttons start>
+          <button ion-button (click)="dismiss()">
+              <ion-icon name="md-close"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+<div *ngIf="storeVal">
+    <ion-card>
+        <ion-card-content>
+            {{question?.Content}}
+            <p>{{question?.LikeCount}}&nbsp;个关注&nbsp;&nbsp;&nbsp;&nbsp;{{question?.CommentCount}}&nbsp;个回答</p>
+          <button ion-button small>
+              <ion-icon name="add"></ion-icon>&nbsp;回答
+          </button>&nbsp;&nbsp;
+          <button ion-button small color="secondary" (click)="saveFavourite()" >
+             &nbsp;{{isFavourite ? '取消关注' : '关注'}}
+          </button>
+    
+        </ion-card-content>
+      </ion-card>
+    
+      <ion-card *ngFor="let a of answers">
+        <ion-item>
+          <ion-avatar item-start>
+              <img src="{{a.HeadFace}}">
+          </ion-avatar>
+          <p>{{a.UserNickName}}</p>
+        </ion-item>
+        <ion-card-content>
+            <p>{{a.Content}}</p>
+            <p class="answer_date">{{a.CreateDateTime}}</p>
+        </ion-card-content>
+      </ion-card>
+    
+</div>
+<div *ngIf="!storeVal">
+  <h2>请先登陆再回答问题</h2>
+</div>
+</ion-content>
+

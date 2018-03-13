@@ -32,9 +32,11 @@ export class RestProvider {
       private apiUrlAnswer = "https://imoocqa.gugujiankong.com/api/question/answer";
       private apiUrlUserNotifications = "https://imoocqa.gugujiankong.com/api/account/usernotifications";
       private apiGetUserQuestionList = "https://imoocqa.gugujiankong.com/api/account/getuserquestionlist";
+     //获取用户信息
       login(mobile, password): Observable<string[]> {
         return this.getUrlReturn(this.apiUrlLogin + "?mobile=" + mobile + "&password=" + password);
       } 
+
         //注册
   register(mobile, nickname, password): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlRegister + "?mobile=" + mobile + "&nickname=" + nickname + "&password=" + password)
@@ -43,12 +45,27 @@ export class RestProvider {
     getUserInfo(userId): Observable<string[]> {
       return this.getUrlReturn(this.apiUrlUserInfo + "?userid=" + userId);
     }
+
       //更新
   updateNickName(userId, nickname): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlUpdateNickName + "?userid=" + userId + "&nickname=" + nickname);
   }
-     //获取用户信息
- 
+  getQuestionWithUser(questionId, userId): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlGetQuestionWithUser + "?id=" + questionId + "&userid=" + userId);
+  }
+  //关注回答
+  saveFavourite(questionId, userId): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlSaveFavourite + "?questionid=" + questionId + "&userid=" + userId);
+  }
+   /**
+   * 请求首页的 feeds 流
+   * 
+   * @returns {Observable<string[]>} 
+   * @memberof RestProvider
+   */
+  getFeeds(): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlFeeds);
+  }
   /**
    * 
    * 全局获取HTTP请求方法

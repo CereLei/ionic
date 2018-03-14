@@ -1,3 +1,4 @@
+import { AnswerPage } from './../pages/answer/answer';
 import { DetailsPage } from './../pages/details/details';
 import { QuestionPage } from './../pages/question/question';
 import { HeadfacePage } from './../pages/headface/headface';
@@ -39,7 +40,8 @@ import { IonicStorageModule } from '@ionic/storage';
     UserPage,
     HeadfacePage,
     QuestionPage,
-    DetailsPage
+    DetailsPage,
+    AnswerPage
 
   ],
   imports: [
@@ -62,7 +64,9 @@ import { IonicStorageModule } from '@ionic/storage';
     UserPage,
     HeadfacePage,
     QuestionPage,
-    DetailsPage
+    DetailsPage,
+    AnswerPage
+    
   ],
   providers: [
     StatusBar,

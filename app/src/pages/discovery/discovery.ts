@@ -1,6 +1,8 @@
+import { DetailsPage } from './../details/details';
+import { RestProvider } from './../../providers/rest/rest';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { BaseUI } from "../../common/baseui";
 /**
  * Generated class for the DiscoveryPage page.
  *
@@ -13,13 +15,45 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-discovery',
   templateUrl: 'discovery.html',
 })
-export class DiscoveryPage {
+export class DiscoveryPage extends BaseUI{
+  questions:string[];
+  errorMessage:any;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController,
+    public rest: RestProvider
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    ) {
+      super();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DiscoveryPage');
+    this.getQuestions();
   }
+  getQuestions(){
+    var loading=super.showLoading(this.loadingCtrl,"加载中..");
+    this.rest.getQuestions()
+    .subscribe(
+      q=>{
+        this.questions=q;
+        loading.dismiss();
+      },
+      error=>this.errorMessage=<any>error
+    )
+  }
+  //加载请求
+  doRefresh(e){
+    this.getQuestions();
+    setTimeout(function() {
+      e.complete();
+    }, 2000);
+  }
+  
 
+  //当个问题的点击
+  gotoDetails(Id){
+    this.navCtrl.push(DetailsPage,{id:Id})
+  }
 }

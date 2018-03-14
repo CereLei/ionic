@@ -1,3 +1,4 @@
+import { AnswerPage } from './../answer/answer';
 import { RestProvider } from './../../providers/rest/rest';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController, ModalController, ViewController } from 'ionic-angular';
@@ -84,5 +85,14 @@ export class DetailsPage extends BaseUI{
   //关闭窗口
   dismiss(){
     this.viewCtrl.dismiss();
+  }
+  showAnswerPage(){
+    var modalCtrl=this.modalCtrl.create(AnswerPage,{id:this.id});
+    modalCtrl.onDidDismiss(
+      () => {
+        this.loadQuestion(this.id);
+      }
+    )
+    modalCtrl.present();
   }
 }

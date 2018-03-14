@@ -66,6 +66,33 @@ export class RestProvider {
   getFeeds(): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlFeeds);
   }
+
+//发现页面
+getQuestions(): Observable<string[]> {
+  return this.getUrlReturn(this.apiUrlQuestionList);
+}
+//回答问题
+answer(userId, questionId, content): Observable<string[]> {
+  return this.getUrlReturn(this.apiUrlAnswer + "?userid=" + userId + "&questionid=" + questionId + "&content=" + content);
+}
+//通知信息
+getUserNotifications(userId): Observable<string[]> {
+  return this.getUrlReturn(this.apiUrlUserNotifications + "?userid=" + userId);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /**
    * 
    * 全局获取HTTP请求方法

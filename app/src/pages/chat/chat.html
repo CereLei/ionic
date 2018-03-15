@@ -7,12 +7,21 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>chat</ion-title>
+    <ion-title>聊天</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+   <!--  <ion-item [navPush]="ChatdetailsPage" [navParams]="userinfo"> -->
+<ion-item (click)="gotoChatDetail()">
+      <ion-avatar item-start>
+          <img src="http://img.mukewang.com/user/57a322f00001e4ae02560256-40-40.jpg">
+      </ion-avatar>
+      <h2>慕女神</h2>
+      <p>闲聊机器人</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

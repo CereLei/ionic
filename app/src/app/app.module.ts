@@ -1,3 +1,5 @@
+import { ComponentsModule } from './../components/components.module';
+import { ChatDetailPage } from './../pages/chat-detail/chat-detail';
 import { AnswerPage } from './../pages/answer/answer';
 import { DetailsPage } from './../pages/details/details';
 import { QuestionPage } from './../pages/question/question';
@@ -21,11 +23,12 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 import {HttpModule} from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { EmojiProvider } from '../providers/emoji/emoji';
 @NgModule({
   declarations: [
     MyApp,
@@ -41,12 +44,16 @@ import { IonicStorageModule } from '@ionic/storage';
     HeadfacePage,
     QuestionPage,
     DetailsPage,
-    AnswerPage
+    AnswerPage,
+    ChatDetailPage
+
 
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -65,7 +72,9 @@ import { IonicStorageModule } from '@ionic/storage';
     HeadfacePage,
     QuestionPage,
     DetailsPage,
-    AnswerPage
+    
+    AnswerPage,
+    ChatDetailPage
     
   ],
   providers: [
@@ -73,7 +82,8 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     RestProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider
+    RestProvider,
+    EmojiProvider
   ]
 })
 export class AppModule {}

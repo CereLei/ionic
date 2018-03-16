@@ -1,3 +1,4 @@
+import { UserdatalistPage } from './../userdatalist/userdatalist';
 import { UserPage } from './../user/user';
 import { LoginPage } from './../login/login';
 import { Component } from '@angular/core';
@@ -68,5 +69,8 @@ export class MorePage extends BaseUI{
   }
   gotoUserPage(){
     this.navCtrl.push(UserPage);
+  }
+  gotoDataList(type) {
+    this.navCtrl.push(UserdatalistPage, { "dataType": type })
   }
 }

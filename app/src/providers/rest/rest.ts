@@ -79,6 +79,17 @@ answer(userId, questionId, content): Observable<string[]> {
 getUserNotifications(userId): Observable<string[]> {
   return this.getUrlReturn(this.apiUrlUserNotifications + "?userid=" + userId);
 }
+  /**
+   * 获取用户的相关问题列表
+   * 
+   * @param {any} userId 
+   * @param {any} type  question/answer/favourite
+   * @returns {Observable<string[]>} 
+   * @memberof RestProvider
+   */
+  getUserQuestionList(userId, type): Observable<string[]> {
+    return this.getUrlReturn(this.apiGetUserQuestionList + "?userid=" + userId + "&type=" + type);
+  }
 
 
 

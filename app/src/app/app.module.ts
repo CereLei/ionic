@@ -1,3 +1,4 @@
+import { UserdatalistPage } from './../pages/userdatalist/userdatalist';
 import { ComponentsModule } from './../components/components.module';
 import { ChatDetailPage } from './../pages/chat-detail/chat-detail';
 import { AnswerPage } from './../pages/answer/answer';
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { EmojiProvider } from '../providers/emoji/emoji';
+import { ChatDetailProvider } from '../providers/chat-detail/chat-detail';
 @NgModule({
   declarations: [
     MyApp,
@@ -45,7 +47,8 @@ import { EmojiProvider } from '../providers/emoji/emoji';
     QuestionPage,
     DetailsPage,
     AnswerPage,
-    ChatDetailPage
+    ChatDetailPage,
+    UserdatalistPage
 
 
   ],
@@ -74,7 +77,8 @@ import { EmojiProvider } from '../providers/emoji/emoji';
     DetailsPage,
     
     AnswerPage,
-    ChatDetailPage
+    ChatDetailPage,
+    UserdatalistPage
     
   ],
   providers: [
@@ -83,7 +87,9 @@ import { EmojiProvider } from '../providers/emoji/emoji';
     RestProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
-    EmojiProvider
+    EmojiProvider,
+    ChatDetailProvider
+
   ]
 })
 export class AppModule {}
